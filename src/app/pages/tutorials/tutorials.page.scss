@@ -1,0 +1,351 @@
+// src/app/pages/tutorials/tutorials.page.scss
+
+ion-toolbar {
+  --background: #0B1120;
+  --color: #F0F4FF;
+}
+
+ion-content {
+  --background: #0B1120;
+}
+
+// ── SELECCIÓN DE CATEGORÍA ────────────────────────────────────────────────────
+
+.cat-selection {
+  padding-bottom: 20px;
+}
+
+.cat-hero {
+  padding: 28px 20px 20px;
+}
+
+.cat-hero-label {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.4px;
+  color: #F5A623;
+  margin-bottom: 8px;
+}
+
+.cat-hero-title {
+  font-size: 28px;
+  font-weight: 800;
+  color: #F0F4FF;
+  line-height: 1.15;
+  margin-bottom: 8px;
+}
+
+.cat-hero-sub {
+  font-size: 13px;
+  color: rgba(240, 244, 255, 0.5);
+  line-height: 1.55;
+}
+
+.cat-grid {
+  padding: 0 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.cat-card {
+  border-radius: 20px;
+  padding: 20px 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  transition: transform 0.12s, border-color 0.15s;
+
+  &:active {
+    transform: scale(0.97);
+  }
+}
+
+.cat-agro {
+  background: linear-gradient(135deg, #0a2a1a 0%, #0d1f14 100%);
+  border-color: rgba(16, 196, 164, 0.2);
+}
+
+.cat-oficio {
+  background: linear-gradient(135deg, #1a1500 0%, #141000 100%);
+  border-color: rgba(245, 166, 35, 0.2);
+}
+
+.cat-gastro {
+  background: linear-gradient(135deg, #2a0f00 0%, #1a0a00 100%);
+  border-color: rgba(232, 99, 26, 0.2);
+}
+
+.cat-bg-emoji {
+  position: absolute;
+  right: -10px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 80px;
+  opacity: 0.08;
+  user-select: none;
+  pointer-events: none;
+}
+
+.cat-icon-wrap {
+  width: 52px;
+  height: 52px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.06);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.cat-main-emoji {
+  font-size: 28px;
+}
+
+.cat-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.cat-name {
+  font-size: 17px;
+  font-weight: 700;
+  color: #F0F4FF;
+  margin-bottom: 2px;
+}
+
+.cat-count {
+  font-size: 12px;
+  color: rgba(240, 244, 255, 0.5);
+  margin-bottom: 8px;
+}
+
+.cat-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+
+  span {
+    font-size: 10px;
+    padding: 3px 8px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.07);
+    color: rgba(240, 244, 255, 0.6);
+  }
+}
+
+.cat-arrow {
+  color: rgba(240, 244, 255, 0.4);
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+// ── CABECERA DE CATEGORÍA ─────────────────────────────────────────────────────
+
+.cat-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 20px 16px 16px;
+}
+
+.cat-header-agro { border-bottom: 1px solid rgba(16, 196, 164, 0.15); }
+.cat-header-oficio { border-bottom: 1px solid rgba(245, 166, 35, 0.15); }
+.cat-header-gastro { border-bottom: 1px solid rgba(232, 99, 26, 0.15); }
+
+.ch-emoji {
+  font-size: 36px;
+}
+
+.ch-label {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: rgba(240, 244, 255, 0.4);
+  margin-bottom: 2px;
+}
+
+.ch-name {
+  font-size: 18px;
+  font-weight: 700;
+  color: #F0F4FF;
+}
+
+.ch-count {
+  font-size: 12px;
+  color: rgba(240, 244, 255, 0.45);
+}
+
+// ── GRID DE VIDEOS ────────────────────────────────────────────────────────────
+
+.vid-grid {
+  padding: 12px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.vid-card {
+  background: #161F35;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.12s;
+
+  &:active {
+    transform: scale(0.98);
+  }
+}
+
+.vid-thumb {
+  height: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.vid-emoji {
+  font-size: 56px;
+  z-index: 1;
+}
+
+.vid-play-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+.play-circle {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: rgba(245, 166, 35, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 20px rgba(245, 166, 35, 0.4);
+
+  ion-icon {
+    font-size: 22px;
+    color: #fff;
+    margin-left: 2px;
+  }
+}
+
+.yt-badge {
+  position: absolute;
+  bottom: 8px;
+  left: 8px;
+  z-index: 3;
+  background: rgba(255, 0, 0, 0.85);
+  border-radius: 8px;
+  padding: 4px 8px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+
+  ion-icon {
+    font-size: 12px;
+    color: #fff;
+  }
+
+  span {
+    font-size: 10px;
+    color: #fff;
+    font-weight: 600;
+  }
+}
+
+.yt-badge-pending {
+  background: rgba(50, 60, 80, 0.9);
+
+  ion-icon, span {
+    color: rgba(240, 244, 255, 0.6);
+  }
+}
+
+.vid-info {
+  padding: 14px 16px;
+}
+
+.vid-cat-tag {
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #F5A623;
+  margin-bottom: 6px;
+}
+
+.vid-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: #F0F4FF;
+  line-height: 1.3;
+  margin-bottom: 8px;
+}
+
+.vid-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.vid-dur {
+  font-size: 12px;
+  color: rgba(240, 244, 255, 0.5);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+
+  ion-icon {
+    font-size: 13px;
+  }
+}
+
+.vid-level {
+  font-size: 10px;
+  padding: 3px 8px;
+  border-radius: 20px;
+  background: rgba(16, 196, 164, 0.12);
+  color: #0FC4A4;
+}
+
+// ── INFO BANNER ───────────────────────────────────────────────────────────────
+
+.info-banner {
+  margin: 16px;
+  background: rgba(15, 196, 164, 0.06);
+  border: 1px solid rgba(15, 196, 164, 0.15);
+  border-radius: 12px;
+  padding: 12px 14px;
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+
+  ion-icon {
+    font-size: 18px;
+    color: #0FC4A4;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  p {
+    font-size: 12px;
+    color: rgba(15, 196, 164, 0.8);
+    line-height: 1.55;
+    margin: 0;
+  }
+}

@@ -1,0 +1,42 @@
+<!-- src/app/pages/institutions/institutions.page.html -->
+
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home" text=""></ion-back-button>
+    </ion-buttons>
+    <ion-title>Módulo V · Instituciones</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="inst-container">
+    <div class="inst-hero">
+      <span class="hero-icon">🤝</span>
+      <h2>Instituciones de apoyo</h2>
+      <p>Conoce las organizaciones que pueden ayudarte a crecer tu emprendimiento en El Salvador.</p>
+    </div>
+
+    <div class="inst-list">
+      <div class="inst-card" *ngFor="let inst of institutions">
+        <div class="inst-header">
+          <div class="inst-emoji">{{ inst.icon }}</div>
+          <div class="inst-info">
+            <h3>{{ inst.name }}</h3>
+            <p class="inst-desc">{{ inst.description }}</p>
+          </div>
+        </div>
+        <div class="inst-footer">
+          <ion-badge [color]="inst.color" class="inst-badge">
+            {{ inst.services }}
+          </ion-badge>
+        </div>
+      </div>
+    </div>
+
+    <div class="info-banner">
+      <ion-icon name="information-circle-outline"></ion-icon>
+      <p>Estas instituciones ofrecen servicios gratuitos o a bajo costo para emprendedores.</p>
+    </div>
+  </div>
+</ion-content>

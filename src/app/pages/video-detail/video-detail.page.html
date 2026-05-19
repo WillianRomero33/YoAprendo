@@ -1,0 +1,103 @@
+<!-- src/app/pages/video-detail/video-detail.page.html -->
+
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button [defaultHref]="'/tutorials'" text=""></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ course?.title | slice:0:26 }}{{ (course?.title?.length || 0) > 26 ? '…' : '' }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" *ngIf="course">
+
+  <!-- ── VIDEO / THUMBNAIL ── -->
+
+  <!-- Si hay YouTube URL real: embed -->
+  <div class="yt-embed-wrap" *ngIf="hasRealYoutube">
+    <iframe
+      [src]="safeYoutubeUrl"
+      allowfullscreen
+      loading="lazy"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture">
+    </iframe>
+  </div>
+
+  <!-- Si no hay URL real: thumbnail con botón abrir YouTube -->
+  <div class="thumb-placeholder" [style.background]="course.bg" *ngIf="!hasRealYoutube">
+    <span class="thumb-emoji">{{ course.emoji }}</span>
+    <div class="thumb-overlay">
+      <div class="thumb-label">
+        <ion-icon name="logo-youtube"></ion-icon>
+        <span>Video no configurado aún</span>
+      </div>
+      <p class="thumb-hint">Edita <code>youtubeUrl</code> en <code>course.model.ts</code> para activar el video</p>
+    </div>
+  </div>
+
+  <!-- ── CONTENIDO DEL TUTORIAL ── -->
+  <div class="vid-content">
+
+    <!-- Categoría y título -->
+    <div>
+      <p class="vid-cat-tag">{{ getCategoryLabel(course.cat) }}</p>
+      <h1 class="vid-title">{{ course.title }}</h1>
+      <div class="vid-meta">
+        <span class="vid-dur">
+          <ion-icon name="time-outline"></ion-icon> {{ course.dur }}
+        </span>
+        <span class="vid-level">{{ course.level }}</span>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- Descripción (estática, sin IA) -->
+    <div class="section">
+      <p class="section-label">Acerca de este tutorial</p>
+      <p class="section-body">{{ course.description }}</p>
+    </div>
+
+    <!-- Qué aprenderás -->
+    <div class="section">
+      <p class="section-label">📚 Qué aprenderás</p>
+      <div class="learn-list">
+        <div class="learn-item" *ngFor="let item of course.whatYouLearn">
+          <div class="learn-dot"></div>
+          <p>{{ item }}</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Primer paso -->
+    <div class="first-step-card">
+      <div class="fsc-header">
+        <ion-icon name="footsteps-outline"></ion-icon>
+        <span>Primer paso concreto</span>
+      </div>
+      <p>{{ course.firstStep }}</p>
+    </div>
+
+    <!-- Botón abrir en YouTube (si hay link real) -->
+    <ion-button
+      expand="block"
+      class="btn-youtube"
+      *ngIf="hasRealYoutube"
+      (click)="openInYoutube()">
+      <ion-icon slot="start" name="logo-youtube"></ion-icon>
+      Abrir en YouTube
+    </ion-button>
+
+    <!-- Botón volver a categoría -->
+    <ion-button
+      expand="block"
+      fill="outline"
+      class="btn-back-cat"
+      (click)="goBackToCategory()">
+      <ion-icon slot="start" name="arrow-back-outline"></ion-icon>
+      Ver más tutoriales de {{ getCategoryLabel(course.cat) }}
+    </ion-button>
+
+  </div>
+
+</ion-content>

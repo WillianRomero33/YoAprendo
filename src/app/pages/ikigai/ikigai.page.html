@@ -1,0 +1,120 @@
+<!-- src/app/pages/ikigai/ikigai.page.html -->
+
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home" text=""></ion-back-button>
+    </ion-buttons>
+    <ion-title>Módulo I · Ikigai</ion-title>
+    <ion-buttons slot="end">
+      <ion-badge color="warning" style="margin-right:16px; padding:4px 10px; border-radius:20px; font-size:11px;">
+        Análisis local
+      </ion-badge>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <!-- Hero -->
+  <div class="ikigai-hero">
+    <div class="kanji">生き甲斐</div>
+    <h2>Ikigai</h2>
+    <p>El concepto japonés que te ayuda a encontrar tu razón de ser emprendedor. Responde las 4 preguntas para descubrir tu camino.</p>
+  </div>
+
+  <!-- Preguntas -->
+  <div class="iq-list">
+
+    <div class="iq-card">
+      <div class="iq-row">
+        <div class="iq-num">1</div>
+        <span class="iq-lbl">Lo que amas</span>
+      </div>
+      <p class="iq-q">¿Cuál es tu pasión? ¿Qué actividades disfrutas hacer?</p>
+      <ion-textarea
+        [(ngModel)]="answers.q1"
+        placeholder="Ej: Me encanta cocinar comida típica salvadoreña…"
+        rows="3"
+        class="iq-ta"
+        auto-grow="false">
+      </ion-textarea>
+    </div>
+
+    <div class="iq-card">
+      <div class="iq-row">
+        <div class="iq-num">2</div>
+        <span class="iq-lbl">En lo que eres bueno/a</span>
+      </div>
+      <p class="iq-q">¿Cuáles son tus habilidades o talentos?</p>
+      <ion-textarea
+        [(ngModel)]="answers.q2"
+        placeholder="Ej: Soy buena arreglando cosas, cultivando plantas…"
+        rows="3"
+        class="iq-ta"
+        auto-grow="false">
+      </ion-textarea>
+    </div>
+
+    <div class="iq-card">
+      <div class="iq-row">
+        <div class="iq-num">3</div>
+        <span class="iq-lbl">Lo que necesita el mundo</span>
+      </div>
+      <p class="iq-q">¿Qué problemas ves en tu comunidad que podrías resolver?</p>
+      <ion-textarea
+        [(ngModel)]="answers.q3"
+        placeholder="Ej: Falta de alimentos frescos y asequibles…"
+        rows="3"
+        class="iq-ta"
+        auto-grow="false">
+      </ion-textarea>
+    </div>
+
+    <div class="iq-card">
+      <div class="iq-row">
+        <div class="iq-num">4</div>
+        <span class="iq-lbl">Por lo que te pueden pagar</span>
+      </div>
+      <p class="iq-q">¿Por qué habilidad o producto estarían dispuestos a pagarte?</p>
+      <ion-textarea
+        [(ngModel)]="answers.q4"
+        placeholder="Ej: Por preparar y vender almuerzos caseros…"
+        rows="3"
+        class="iq-ta"
+        auto-grow="false">
+      </ion-textarea>
+    </div>
+
+  </div>
+
+  <!-- Botón analizar -->
+  <div class="action-area">
+    <ion-button expand="block" class="btn-analyze" (click)="analyzeIkigai()">
+      <ion-icon slot="start" name="sparkles-outline"></ion-icon>
+      Descubrir mi Ikigai
+    </ion-button>
+  </div>
+
+  <!-- Resultado -->
+  <div class="result-card" *ngIf="result">
+    <div class="result-header">
+      <ion-icon name="bulb-outline" color="warning"></ion-icon>
+      <span>Tu resultado Ikigai</span>
+    </div>
+    <p class="result-text">{{ result }}</p>
+    <ion-button expand="block" fill="outline" class="btn-save" (click)="saveAndContinue()">
+      <ion-icon slot="start" name="checkmark-circle-outline"></ion-icon>
+      Guardar y continuar
+    </ion-button>
+  </div>
+
+  <!-- Info: sin API -->
+  <div class="info-banner">
+    <ion-icon name="information-circle-outline"></ion-icon>
+    <p>El análisis se realiza de forma local en tu dispositivo, sin necesidad de internet.</p>
+  </div>
+
+  <div style="height: 30px;"></div>
+
+</ion-content>

@@ -1,0 +1,101 @@
+<!-- src/app/pages/pricing/pricing.page.html -->
+
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home" text=""></ion-back-button>
+    </ion-buttons>
+    <ion-title>Módulo III · Precios</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="calc-body">
+
+    <!-- Hero -->
+    <div class="pricing-hero">
+      <span class="hero-icon">💰</span>
+      <h2>Calculadora de precios</h2>
+      <p>Ingresa los costos de tu producto y calcula el precio justo para que tu negocio sea sostenible.</p>
+    </div>
+
+    <!-- Formulario -->
+    <div class="form-card">
+
+      <div class="field-group">
+        <p class="field-label">PRODUCTO O SERVICIO</p>
+        <ion-input [(ngModel)]="producto" placeholder="Ej: Pupusas de queso" class="calc-inp"></ion-input>
+      </div>
+
+      <div class="grid2">
+        <div class="field-group">
+          <p class="field-label">MATERIALES (USD)</p>
+          <ion-input [(ngModel)]="materiales" type="number" placeholder="0.00" class="calc-inp" step="0.01" min="0"></ion-input>
+        </div>
+        <div class="field-group">
+          <p class="field-label">MANO DE OBRA (USD)</p>
+          <ion-input [(ngModel)]="manoDeObra" type="number" placeholder="0.00" class="calc-inp" step="0.01" min="0"></ion-input>
+        </div>
+      </div>
+
+      <div class="grid2">
+        <div class="field-group">
+          <p class="field-label">GASTOS FIJOS (USD)</p>
+          <ion-input [(ngModel)]="gastosFijos" type="number" placeholder="0.00" class="calc-inp" step="0.01" min="0"></ion-input>
+        </div>
+        <div class="field-group">
+          <p class="field-label">GANANCIA DESEADA (%)</p>
+          <ion-input [(ngModel)]="gananciaPct" type="number" placeholder="30" class="calc-inp" min="0" max="300"></ion-input>
+        </div>
+      </div>
+
+      <div class="field-group">
+        <p class="field-label">UNIDADES A PRODUCIR</p>
+        <ion-input [(ngModel)]="unidades" type="number" placeholder="Ej: 50" class="calc-inp" min="1"></ion-input>
+      </div>
+
+      <ion-button expand="block" class="btn-calc" (click)="calcularPrecio()">
+        <ion-icon slot="start" name="calculator-outline"></ion-icon>
+        Calcular precio sugerido
+      </ion-button>
+    </div>
+
+    <!-- Resultado -->
+    <div class="result-card" *ngIf="resultado">
+      <div class="result-row">
+        <span class="rl">Costo por unidad</span>
+        <span class="rv">${{ resultado.costoPorUnidad | number:'1.2-2' }}</span>
+      </div>
+      <div class="result-row">
+        <span class="rl">Ganancia por unidad</span>
+        <span class="rv rv-teal">${{ resultado.utilidad | number:'1.2-2' }}</span>
+      </div>
+      <div class="result-divider"></div>
+      <div class="result-row result-row-big">
+        <span class="rl">Precio sugerido de venta</span>
+        <span class="rv rv-gold">${{ resultado.precio | number:'1.2-2' }}</span>
+      </div>
+      <p class="result-note">Para {{ producto || 'tu producto' }}</p>
+    </div>
+
+    <!-- Consejo estático (rotativo) -->
+    <div class="tip-card" *ngIf="resultado">
+      <div class="tip-header">
+        <ion-icon name="bulb-outline"></ion-icon>
+        <span>Consejo de negocio</span>
+      </div>
+      <p>{{ tipActual }}</p>
+      <ion-button fill="outline" size="small" class="btn-next-tip" (click)="nextTip()">
+        Otro consejo <ion-icon slot="end" name="refresh-outline"></ion-icon>
+      </ion-button>
+    </div>
+
+    <!-- Info -->
+    <div class="info-banner">
+      <ion-icon name="information-circle-outline"></ion-icon>
+      <p>El cálculo se realiza en tu dispositivo. No necesita internet.</p>
+    </div>
+
+    <div style="height:30px;"></div>
+  </div>
+</ion-content>

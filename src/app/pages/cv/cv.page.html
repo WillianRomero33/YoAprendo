@@ -1,0 +1,179 @@
+<!-- src/app/pages/cv/cv.page.html -->
+
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home" text=""></ion-back-button>
+    </ion-buttons>
+    <ion-title>Generador de CV</ion-title>
+    <ion-buttons slot="end">
+      <ion-badge color="warning" style="margin-right:14px; padding:4px 10px; border-radius:20px; font-size:11px;">
+        PDF · Word
+      </ion-badge>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="cv-body">
+
+    <!-- ── DATOS PERSONALES ── -->
+    <div class="cv-sec">
+      <div class="cv-sec-head">
+        <ion-icon name="person-outline"></ion-icon>
+        <span>Datos personales</span>
+      </div>
+      <div class="cv-sec-body">
+        <div class="field-group">
+          <p class="cv-label">NOMBRE COMPLETO</p>
+          <ion-input
+            [(ngModel)]="cvData.nombre"
+            placeholder="Ana María García López"
+            class="cv-inp">
+          </ion-input>
+        </div>
+        <div class="grid2">
+          <div class="field-group">
+            <p class="cv-label">TELÉFONO</p>
+            <ion-input [(ngModel)]="cvData.telefono" placeholder="7000-0000" class="cv-inp" type="tel"></ion-input>
+          </div>
+          <div class="field-group">
+            <p class="cv-label">CORREO</p>
+            <ion-input [(ngModel)]="cvData.correo" placeholder="ana@correo.com" class="cv-inp" type="email"></ion-input>
+          </div>
+        </div>
+        <div class="field-group">
+          <p class="cv-label">DIRECCIÓN</p>
+          <ion-input [(ngModel)]="cvData.direccion" placeholder="San Salvador, El Salvador" class="cv-inp"></ion-input>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── PERFIL PROFESIONAL ── -->
+    <div class="cv-sec">
+      <div class="cv-sec-head">
+        <ion-icon name="star-outline"></ion-icon>
+        <span>Perfil profesional</span>
+      </div>
+      <div class="cv-sec-body">
+        <p class="cv-hint">Resume tus habilidades, experiencia y objetivo profesional en 2-3 oraciones.</p>
+        <ion-textarea
+          [(ngModel)]="cvData.perfil"
+          placeholder="Ej: Emprendedora con 4 años de experiencia en gastronomía y ventas. Habilidades en atención al cliente, manejo de costos y trabajo en equipo. Busco oportunidades para crecer profesionalmente y aportar valor a mi comunidad."
+          rows="4"
+          auto-grow="false"
+          class="cv-ta">
+        </ion-textarea>
+        <!-- Sugerencia estática (sin IA) -->
+        <div class="suggestion-box" *ngIf="profileTip">
+          <ion-icon name="bulb-outline"></ion-icon>
+          <p>{{ profileTip }}</p>
+        </div>
+        <ion-button fill="outline" size="small" class="btn-tip" (click)="getProfileTip()">
+          <ion-icon slot="start" name="bulb-outline"></ion-icon>
+          Ver consejo para el perfil
+        </ion-button>
+      </div>
+    </div>
+
+    <!-- ── EXPERIENCIA LABORAL ── -->
+    <div class="cv-sec">
+      <div class="cv-sec-head">
+        <ion-icon name="briefcase-outline"></ion-icon>
+        <span>Experiencia laboral</span>
+      </div>
+      <div class="cv-sec-body">
+        <p class="cv-hint">Incluye: puesto, empresa o lugar, período y lo que hacías.</p>
+        <ion-textarea
+          [(ngModel)]="cvData.experiencia"
+          placeholder="Ej: Vendedora independiente, mercado municipal San Jacinto, 2020–2024. Comercialicé verduras, hierbas y plantas ornamentales. Atendí un promedio de 30 clientes diarios y gestioné inventario y precios."
+          rows="5"
+          auto-grow="false"
+          class="cv-ta">
+        </ion-textarea>
+      </div>
+    </div>
+
+    <!-- ── EDUCACIÓN ── -->
+    <div class="cv-sec">
+      <div class="cv-sec-head">
+        <ion-icon name="school-outline"></ion-icon>
+        <span>Educación</span>
+      </div>
+      <div class="cv-sec-body">
+        <ion-textarea
+          [(ngModel)]="cvData.educacion"
+          placeholder="Ej: Instituto Nacional de San Salvador, Bachillerato General, 2018. Curso de Emprendimiento, INSAFORP, 2023. Módulo ImpulNova, ULS, 2026."
+          rows="3"
+          auto-grow="false"
+          class="cv-ta">
+        </ion-textarea>
+      </div>
+    </div>
+
+    <!-- ── HABILIDADES ── -->
+    <div class="cv-sec">
+      <div class="cv-sec-head">
+        <ion-icon name="construct-outline"></ion-icon>
+        <span>Habilidades</span>
+      </div>
+      <div class="cv-sec-body">
+        <p class="cv-hint">Separa las habilidades con comas. Aparecerán como etiquetas en el CV.</p>
+        <ion-input
+          [(ngModel)]="cvData.habilidades"
+          placeholder="Trabajo en equipo, ventas, cultivo orgánico, atención al cliente, liderazgo"
+          class="cv-inp">
+        </ion-input>
+        <!-- Preview de habilidades -->
+        <div class="skills-preview" *ngIf="skillsList.length > 0">
+          <span *ngFor="let skill of skillsList" class="skill-pill">{{ skill }}</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── REFERENCIAS ── -->
+    <div class="cv-sec">
+      <div class="cv-sec-head">
+        <ion-icon name="people-outline"></ion-icon>
+        <span>Referencias</span>
+      </div>
+      <div class="cv-sec-body">
+        <ion-input
+          [(ngModel)]="cvData.referencias"
+          placeholder="Disponibles al solicitarlas"
+          class="cv-inp">
+        </ion-input>
+      </div>
+    </div>
+
+    <!-- ── ACCIONES ── -->
+    <div class="actions-section">
+      <p class="actions-title">Descargar mi CV</p>
+      <div class="dl-row">
+        <button class="btn-dl btn-pdf" (click)="downloadPDF()">
+          <ion-icon name="document-outline"></ion-icon>
+          <div>
+            <span class="dl-label">PDF</span>
+            <span class="dl-sub">Diseño moderno</span>
+          </div>
+        </button>
+        <button class="btn-dl btn-word" (click)="downloadWord()">
+          <ion-icon name="document-text-outline"></ion-icon>
+          <div>
+            <span class="dl-label">Word</span>
+            <span class="dl-sub">Editable (.doc)</span>
+          </div>
+        </button>
+      </div>
+      <p class="dl-note">El PDF incluye el diseño ImpulNova · ULS con colores corporativos y cubre una página carta completa.</p>
+    </div>
+
+    <!-- Info sin internet -->
+    <div class="info-banner">
+      <ion-icon name="flash-outline"></ion-icon>
+      <p>El CV se genera 100% en tu dispositivo. No necesita internet ni API.</p>
+    </div>
+
+    <div style="height: 30px;"></div>
+  </div>
+</ion-content>

@@ -1,3 +1,26 @@
+<!-- src/app/app.component.html -->
 <ion-app>
   <ion-router-outlet></ion-router-outlet>
+  
+  <ion-tab-bar *ngIf="showTabBar" class="custom-tab-bar">
+    <ion-tab-button tab="home" routerLink="/home" routerLinkActive="tab-selected">
+      <ion-icon name="home"></ion-icon>
+      <ion-label>Inicio</ion-label>
+    </ion-tab-button>
+    
+    <ion-tab-button tab="tutorials" routerLink="/tutorials" routerLinkActive="tab-selected">
+      <ion-icon name="videocam"></ion-icon>
+      <ion-label>Cursos</ion-label>
+    </ion-tab-button>
+    
+    <ion-tab-button tab="cv" routerLink="/cv" routerLinkActive="tab-selected">
+      <ion-icon name="document-text"></ion-icon>
+      <ion-label>Mi CV</ion-label>
+    </ion-tab-button>
+    
+    <ion-tab-button tab="institutions" routerLink="/institutions" routerLinkActive="tab-selected">
+      <ion-icon name="business"></ion-icon>
+      <ion-label>Apoyo</ion-label>
+    </ion-tab-button>
+  </ion-tab-bar>
 </ion-app>

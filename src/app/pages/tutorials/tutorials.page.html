@@ -1,0 +1,162 @@
+<!-- src/app/pages/tutorials/tutorials.page.html -->
+<!--
+  MÓDULO II · TUTORIALES
+  Al seleccionar una categoría → muestra grid de videos de esa categoría.
+  Al hacer clic en una tarjeta de video → navega al video-detail.
+  Los links de YouTube se editan directamente en course.model.ts
+-->
+
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home" text=""></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ activeCat ? getCategoryLabel(activeCat) : 'Módulo II · Tutoriales' }}</ion-title>
+    <ion-buttons slot="end" *ngIf="activeCat">
+      <ion-button fill="clear" (click)="clearFilter()">
+        <ion-icon slot="icon-only" name="close-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <!-- ── VISTA: SELECCIÓN DE CATEGORÍA (pantalla inicial) ── -->
+  <div *ngIf="!activeCat" class="cat-selection">
+
+    <div class="cat-hero">
+      <p class="cat-hero-label">Elige un área</p>
+      <h2 class="cat-hero-title">¿Qué quieres<br>aprender hoy?</h2>
+      <p class="cat-hero-sub">Selecciona una categoría para ver los tutoriales disponibles</p>
+    </div>
+
+    <div class="cat-grid">
+
+      <!-- Agroecología -->
+      <div class="cat-card cat-agro" (click)="selectCategory('agro')">
+        <div class="cat-bg-emoji">🌱</div>
+        <div class="cat-content">
+          <div class="cat-icon-wrap">
+            <span class="cat-main-emoji">🌱</span>
+          </div>
+          <p class="cat-name">Agroecología</p>
+          <p class="cat-count">{{ getCourseCount('agro') }} tutoriales</p>
+          <div class="cat-tags">
+            <span>Invernaderos</span>
+            <span>Plantas</span>
+            <span>Huertos</span>
+          </div>
+        </div>
+        <div class="cat-arrow">
+          <ion-icon name="arrow-forward-outline"></ion-icon>
+        </div>
+      </div>
+
+      <!-- Oficios -->
+      <div class="cat-card cat-oficio" (click)="selectCategory('oficio')">
+        <div class="cat-bg-emoji">🪚</div>
+        <div class="cat-content">
+          <div class="cat-icon-wrap">
+            <span class="cat-main-emoji">🪚</span>
+          </div>
+          <p class="cat-name">Oficios</p>
+          <p class="cat-count">{{ getCourseCount('oficio') }} tutoriales</p>
+          <div class="cat-tags">
+            <span>Carpintería</span>
+            <span>Bisutería</span>
+            <span>Costura</span>
+          </div>
+        </div>
+        <div class="cat-arrow">
+          <ion-icon name="arrow-forward-outline"></ion-icon>
+        </div>
+      </div>
+
+      <!-- Gastronomía -->
+      <div class="cat-card cat-gastro" (click)="selectCategory('gastro')">
+        <div class="cat-bg-emoji">🍲</div>
+        <div class="cat-content">
+          <div class="cat-icon-wrap">
+            <span class="cat-main-emoji">🍲</span>
+          </div>
+          <p class="cat-name">Gastronomía</p>
+          <p class="cat-count">{{ getCourseCount('gastro') }} tutoriales</p>
+          <div class="cat-tags">
+            <span>Comida casera</span>
+            <span>Conservas</span>
+          </div>
+        </div>
+        <div class="cat-arrow">
+          <ion-icon name="arrow-forward-outline"></ion-icon>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Tip informativo -->
+    <div class="info-banner">
+      <ion-icon name="play-circle-outline"></ion-icon>
+      <p>Cada tutorial incluye un video de YouTube y una guía de primeros pasos para emprender.</p>
+    </div>
+
+  </div>
+
+  <!-- ── VISTA: LISTA DE VIDEOS POR CATEGORÍA ── -->
+  <div *ngIf="activeCat" class="video-list">
+
+    <!-- Cabecera de categoría -->
+    <div class="cat-header" [class]="'cat-header-' + activeCat">
+      <span class="ch-emoji">{{ getCategoryEmoji(activeCat) }}</span>
+      <div>
+        <p class="ch-label">Categoría</p>
+        <p class="ch-name">{{ getCategoryLabel(activeCat) }}</p>
+        <p class="ch-count">{{ filteredCourses.length }} tutoriales disponibles</p>
+      </div>
+    </div>
+
+    <!-- Grid de videos -->
+    <div class="vid-grid">
+      <div
+        *ngFor="let course of filteredCourses"
+        class="vid-card"
+        (click)="openCourse(course)">
+
+        <!-- Thumbnail -->
+        <div class="vid-thumb" [style.background]="course.bg">
+          <span class="vid-emoji">{{ course.emoji }}</span>
+          <div class="vid-play-overlay">
+            <div class="play-circle">
+              <ion-icon name="play"></ion-icon>
+            </div>
+          </div>
+          <!-- Badge YouTube -->
+          <div class="yt-badge" *ngIf="hasRealYoutube(course.youtubeUrl)">
+            <ion-icon name="logo-youtube"></ion-icon>
+            <span>Video disponible</span>
+          </div>
+          <div class="yt-badge yt-badge-pending" *ngIf="!hasRealYoutube(course.youtubeUrl)">
+            <ion-icon name="time-outline"></ion-icon>
+            <span>Próximamente</span>
+          </div>
+        </div>
+
+        <!-- Info -->
+        <div class="vid-info">
+          <p class="vid-cat-tag">{{ getCategoryLabel(activeCat) }}</p>
+          <p class="vid-title">{{ course.title }}</p>
+          <div class="vid-meta">
+            <span class="vid-dur">
+              <ion-icon name="time-outline"></ion-icon> {{ course.dur }}
+            </span>
+            <span class="vid-level">{{ course.level }}</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div style="height: 30px;"></div>
+  </div>
+
+</ion-content>

@@ -1,0 +1,186 @@
+<!-- src/app/pages/canvas/canvas.page.html -->
+<!--
+  MÓDULO IV: Canvas de Negocio + acceso directo al generador de CV
+  El header muestra "Canvas & CV" y hay un segmento para alternar entre ambas vistas.
+-->
+
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home" text=""></ion-back-button>
+    </ion-buttons>
+    <ion-title>Módulo IV · Canvas & CV</ion-title>
+  </ion-toolbar>
+
+  <!-- Segmento para alternar Canvas / Ir a CV -->
+  <ion-toolbar class="segment-toolbar">
+    <ion-segment [(ngModel)]="activeSegment" (ionChange)="onSegmentChange($event)" color="warning">
+      <ion-segment-button value="canvas">
+        <ion-label>📋 Canvas de Negocio</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="cv-link">
+        <ion-label>📄 Generador de CV</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <!-- ══════════════════════════════════════════════════════════
+       SEGMENTO 1: CANVAS DE NEGOCIO
+       ══════════════════════════════════════════════════════════ -->
+  <div *ngIf="activeSegment === 'canvas'" class="canvas-segment">
+
+    <!-- Info banner -->
+    <div class="info-banner">
+      <ion-icon name="bulb-outline"></ion-icon>
+      <p>El modelo CANVAS te ayuda a visualizar tu negocio completo en un solo mapa. Completa los bloques y recibe retroalimentación.</p>
+    </div>
+
+    <!-- Bloques del Canvas -->
+    <div class="canvas-body">
+
+      <div class="canvas-block" *ngFor="let block of canvasBlocks; let i = index">
+        <div class="canvas-head">
+          <span class="ch-emoji">{{ block.emoji }}</span>
+          <div>
+            <span class="ch-title">{{ block.title }}</span>
+            <span class="ch-num">Bloque {{ i + 1 }}/9</span>
+          </div>
+        </div>
+        <div class="canvas-hint">{{ block.hint }}</div>
+        <ion-textarea
+          [(ngModel)]="canvasData[i]"
+          [placeholder]="block.placeholder"
+          rows="3"
+          auto-grow="false"
+          class="canvas-ta">
+        </ion-textarea>
+      </div>
+
+    </div>
+
+    <!-- Botón analizar (lógica estática) -->
+    <div class="action-area">
+      <ion-button expand="block" class="btn-analyze" (click)="analyzeCanvas()">
+        <ion-icon slot="start" name="analytics-outline"></ion-icon>
+        Analizar mi Canvas
+      </ion-button>
+    </div>
+
+    <!-- Resultado del análisis -->
+    <div class="result-card" *ngIf="canvasResult">
+      <div class="result-header">
+        <ion-icon name="checkmark-circle-outline" color="success"></ion-icon>
+        <span>Retroalimentación</span>
+      </div>
+      <p class="result-text">{{ canvasResult }}</p>
+    </div>
+
+    <div style="height: 30px;"></div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════
+       SEGMENTO 2: ACCESO AL GENERADOR DE CV
+       ══════════════════════════════════════════════════════════ -->
+  <div *ngIf="activeSegment === 'cv-link'" class="cv-link-segment">
+
+    <!-- Hero -->
+    <div class="cvl-hero">
+      <div class="cvl-icon">📄</div>
+      <h2>Generador de CV</h2>
+      <p>Crea tu hoja de vida profesional con diseño moderno. Descárgala en PDF o Word en segundos.</p>
+    </div>
+
+    <!-- Características del CV -->
+    <div class="cvl-features">
+      <div class="feat-card">
+        <ion-icon name="document-text-outline" color="warning"></ion-icon>
+        <div>
+          <p class="feat-title">Diseño moderno</p>
+          <p class="feat-sub">Layout de dos columnas tipo profesional</p>
+        </div>
+      </div>
+      <div class="feat-card">
+        <ion-icon name="download-outline" color="warning"></ion-icon>
+        <div>
+          <p class="feat-title">Descarga en PDF y Word</p>
+          <p class="feat-sub">Listo para enviar a empleadores</p>
+        </div>
+      </div>
+      <div class="feat-card">
+        <ion-icon name="flash-outline" color="warning"></ion-icon>
+        <div>
+          <p class="feat-title">Sin internet requerido</p>
+          <p class="feat-sub">Se genera 100% en tu dispositivo</p>
+        </div>
+      </div>
+      <div class="feat-card">
+        <ion-icon name="save-outline" color="warning"></ion-icon>
+        <div>
+          <p class="feat-title">Datos guardados</p>
+          <p class="feat-sub">Tus datos se guardan automáticamente</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Botón ir al CV -->
+    <div class="action-area">
+      <ion-button expand="block" class="btn-go-cv" (click)="goToCV()">
+        <ion-icon slot="start" name="create-outline"></ion-icon>
+        Crear / Editar mi CV
+        <ion-icon slot="end" name="arrow-forward-outline"></ion-icon>
+      </ion-button>
+    </div>
+
+    <!-- Vista previa del diseño -->
+    <div class="cv-preview-card">
+      <p class="prev-label">Vista previa del diseño</p>
+      <div class="cv-mini">
+        <!-- Columna izquierda -->
+        <div class="cv-mini-left">
+          <div class="cv-mini-avatar">YA</div>
+          <div class="cv-mini-lines">
+            <div class="ml ml-name"></div>
+            <div class="ml ml-tag"></div>
+            <div class="ml ml-divider"></div>
+            <div class="ml ml-sec-title"></div>
+            <div class="ml ml-item"></div>
+            <div class="ml ml-item short"></div>
+            <div class="ml ml-item"></div>
+            <div class="ml ml-divider"></div>
+            <div class="ml ml-sec-title"></div>
+            <div class="ml ml-pill"></div>
+            <div class="ml ml-pill"></div>
+          </div>
+        </div>
+        <!-- Columna derecha -->
+        <div class="cv-mini-right">
+          <div class="cv-mini-name"></div>
+          <div class="cv-mini-sub"></div>
+          <div class="cv-mini-accent"></div>
+          <div class="cv-mini-section">
+            <div class="cvs-title"></div>
+            <div class="cvs-line"></div>
+            <div class="cvs-line short"></div>
+            <div class="cvs-line"></div>
+          </div>
+          <div class="cv-mini-section">
+            <div class="cvs-title"></div>
+            <div class="cvs-line"></div>
+            <div class="cvs-line short"></div>
+          </div>
+          <div class="cv-mini-section">
+            <div class="cvs-title"></div>
+            <div class="cvs-line"></div>
+          </div>
+        </div>
+      </div>
+      <p class="prev-caption">Diseño ImpulNova · ULS · Colores corporativos</p>
+    </div>
+
+    <div style="height: 30px;"></div>
+  </div>
+
+</ion-content>

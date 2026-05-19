@@ -1,0 +1,279 @@
+// src/app/pages/cv/cv.page.scss
+
+ion-toolbar {
+  --background: #0B1120;
+  --color: #F0F4FF;
+}
+
+ion-content {
+  --background: #0B1120;
+}
+
+.cv-body {
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+// ── SECCIONES ─────────────────────────────────────────────────────────────────
+
+.cv-sec {
+  background: #161F35;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.cv-sec-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  background: #1E2A42;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+
+  ion-icon {
+    font-size: 16px;
+    color: #F5A623;
+    flex-shrink: 0;
+  }
+
+  span {
+    font-size: 13px;
+    font-weight: 700;
+    color: #F0F4FF;
+  }
+}
+
+.cv-sec-body {
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.cv-label {
+  font-size: 11px;
+  font-weight: 600;
+  color: rgba(240, 244, 255, 0.4);
+  letter-spacing: 0.5px;
+  margin-bottom: 5px;
+}
+
+.cv-hint {
+  font-size: 12px;
+  color: rgba(240, 244, 255, 0.38);
+  font-style: italic;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.cv-inp {
+  --background: rgba(255, 255, 255, 0.04);
+  --color: #F0F4FF;
+  --placeholder-color: rgba(240, 244, 255, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  font-size: 14px;
+  --padding-start: 12px;
+  --padding-end: 12px;
+  --padding-top: 10px;
+  --padding-bottom: 10px;
+  transition: border-color 0.2s;
+
+  &.has-focus {
+    border-color: rgba(245, 166, 35, 0.5);
+  }
+}
+
+.cv-ta {
+  --background: rgba(255, 255, 255, 0.04);
+  --color: rgba(240, 244, 255, 0.88);
+  --placeholder-color: rgba(240, 244, 255, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  font-size: 13px;
+  line-height: 1.65;
+  --padding-start: 12px;
+  --padding-end: 12px;
+  --padding-top: 10px;
+  --padding-bottom: 10px;
+  transition: border-color 0.2s;
+
+  &.has-focus {
+    border-color: rgba(245, 166, 35, 0.4);
+  }
+}
+
+.grid2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.field-group {
+  display: flex;
+  flex-direction: column;
+}
+
+// ── SKILLS PREVIEW ────────────────────────────────────────────────────────────
+
+.skills-preview {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+.skill-pill {
+  font-size: 11px;
+  padding: 4px 10px;
+  border-radius: 20px;
+  background: rgba(245, 166, 35, 0.12);
+  color: #F5A623;
+  border: 1px solid rgba(245, 166, 35, 0.2);
+}
+
+// ── SUGERENCIA / TIP ──────────────────────────────────────────────────────────
+
+.suggestion-box {
+  background: rgba(15, 196, 164, 0.06);
+  border: 1px solid rgba(15, 196, 164, 0.2);
+  border-radius: 12px;
+  padding: 12px 14px;
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  animation: fadeUp 0.3s ease;
+
+  ion-icon {
+    font-size: 16px;
+    color: #0FC4A4;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  p {
+    font-size: 12px;
+    color: rgba(15, 196, 164, 0.85);
+    line-height: 1.6;
+    margin: 0;
+    white-space: pre-wrap;
+  }
+}
+
+.btn-tip {
+  --border-color: rgba(15, 196, 164, 0.3);
+  --color: #0FC4A4;
+  --border-radius: 10px;
+  margin: 0;
+  font-size: 12px;
+}
+
+// ── ACCIONES / DESCARGA ───────────────────────────────────────────────────────
+
+.actions-section {
+  background: #161F35;
+  border: 1px solid rgba(245, 166, 35, 0.2);
+  border-radius: 20px;
+  padding: 16px;
+}
+
+.actions-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: #F0F4FF;
+  margin-bottom: 12px;
+}
+
+.dl-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.btn-dl {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px 10px;
+  border-radius: 14px;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.12s, opacity 0.15s;
+
+  &:active {
+    transform: scale(0.96);
+    opacity: 0.85;
+  }
+
+  ion-icon {
+    font-size: 24px;
+    flex-shrink: 0;
+  }
+
+  .dl-label {
+    display: block;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.2;
+  }
+
+  .dl-sub {
+    display: block;
+    font-size: 10px;
+    opacity: 0.75;
+  }
+}
+
+.btn-pdf {
+  background: linear-gradient(135deg, #c0392b, #e74c3c);
+  color: #fff;
+  text-align: left;
+}
+
+.btn-word {
+  background: linear-gradient(135deg, #1e3a5f, #2e5fa3);
+  color: #fff;
+  text-align: left;
+}
+
+.dl-note {
+  font-size: 11px;
+  color: rgba(240, 244, 255, 0.35);
+  line-height: 1.55;
+  text-align: center;
+}
+
+// ── INFO BANNER ───────────────────────────────────────────────────────────────
+
+.info-banner {
+  background: rgba(15, 196, 164, 0.05);
+  border: 1px solid rgba(15, 196, 164, 0.12);
+  border-radius: 12px;
+  padding: 10px 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  ion-icon {
+    font-size: 16px;
+    color: #0FC4A4;
+    flex-shrink: 0;
+  }
+
+  p {
+    font-size: 11.5px;
+    color: rgba(15, 196, 164, 0.75);
+    line-height: 1.5;
+    margin: 0;
+  }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}

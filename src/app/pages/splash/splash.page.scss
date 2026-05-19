@@ -1,0 +1,173 @@
+// src/app/pages/splash/splash.page.scss
+
+.splash-container {
+  --background: #0B1120;
+  position: relative;
+  overflow: hidden;
+}
+
+.splash-bg {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.splash-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(70px);
+  opacity: 0.18;
+}
+
+.blob1 {
+  width: 320px;
+  height: 320px;
+  background: #F5A623;
+  top: -80px;
+  right: -100px;
+}
+
+.blob2 {
+  width: 260px;
+  height: 260px;
+  background: #0FC4A4;
+  bottom: 100px;
+  left: -80px;
+}
+
+.blob3 {
+  width: 200px;
+  height: 200px;
+  background: #E8631A;
+  bottom: -60px;
+  right: 20px;
+}
+
+.splash-grid {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+.splash-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 0 28px;
+}
+
+.splash-top {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+  padding-top: 60px;
+}
+
+.uls-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(245,166,35,0.12);
+  border: 1px solid rgba(245,166,35,0.3);
+  border-radius: 30px;
+  padding: 6px 14px;
+  width: fit-content;
+  
+  ion-text {
+    font-size: 11px;
+    font-weight: 500;
+    color: #F5A623;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+  }
+}
+
+.splash-title {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(36px, 12vw, 58px); // ← Responsive: min 36px, max 58px
+  font-weight: 800;
+  line-height: 1.1; // ← Mejor espacio entre líneas
+  letter-spacing: -1px; // ← Reduce el espaciado para pantallas pequeñas
+  
+  .yo {
+    color: #F5A623;
+    display: inline-block; // ← Mejor para responsive
+  }
+  
+  .aprendo {
+    color: #F0F4FF;
+    display: block;
+    margin-top: 4px; // ← Pequeño espacio entre palabras
+    word-break: keep-all; // ← Evita que se corte la palabra
+  }
+}
+
+// Ajuste específico para pantallas muy pequeñas
+@media (max-width: 380px) {
+  .splash-title {
+    font-size: clamp(28px, 10vw, 36px);
+    letter-spacing: -0.5px;
+    line-height: 1.15;
+  }
+  
+  .splash-top {
+    gap: 16px;
+    padding-top: 40px;
+  }
+  
+  .splash-desc {
+    font-size: 13px;
+    max-width: 100%; // ← Permite que ocupe todo el ancho
+  }
+}
+
+// Para iPhone SE y similares
+@media (max-width: 320px) {
+  .splash-title {
+    font-size: 26px;
+  }
+  
+  .splash-content {
+    padding: 0 20px;
+  }
+}
+
+.splash-desc {
+  font-size: 15px;
+  color: rgba(240,244,255,0.5);
+  line-height: 1.65;
+  max-width: 300px;
+}
+
+.splash-bottom {
+  padding: 28px 0 44px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.btn-gold {
+  --background: linear-gradient(135deg, #F5A623, #E8631A);
+  --background-activated: linear-gradient(135deg, #E8631A, #F5A623);
+  --border-radius: 20px;
+  --padding-top: 16px;
+  --padding-bottom: 16px;
+  margin: 0;
+  font-weight: 500;
+}
+
+.btn-ghost {
+  --border-color: rgba(255,255,255,0.08);
+  --color: rgba(240,244,255,0.5);
+  --border-radius: 20px;
+  --padding-top: 15px;
+  --padding-bottom: 15px;
+}
+

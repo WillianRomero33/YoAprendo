@@ -1,37 +1,153 @@
-/*
- * App Global CSS
- * ----------------------------------------------------------------------------
- * Put style rules here that you want to apply globally. These styles are for
- * the entire app and not just one component. Additionally, this file can be
- * used as an entry point to import other CSS/Sass files to be included in the
- * output CSS.
- * For more information on global stylesheets, visit the documentation:
- * https://ionicframework.com/docs/layout/global-stylesheets
- */
+/* Fuente Syne — usada en títulos de home, módulos y UI principal */
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800&display=swap');
 
-/* Core CSS required for Ionic components to work properly */
+/* App Global CSS */
 @import "@ionic/angular/css/core.css";
-
-/* Basic CSS for apps built with Ionic */
 @import "@ionic/angular/css/normalize.css";
 @import "@ionic/angular/css/structure.css";
 @import "@ionic/angular/css/typography.css";
 @import "@ionic/angular/css/display.css";
-
-/* Optional CSS utils that can be commented out */
 @import "@ionic/angular/css/padding.css";
 @import "@ionic/angular/css/float-elements.css";
 @import "@ionic/angular/css/text-alignment.css";
 @import "@ionic/angular/css/text-transformation.css";
 @import "@ionic/angular/css/flex-utils.css";
 
-/**
- * Ionic Dark Mode
- * -----------------------------------------------------
- * For more info, please see:
- * https://ionicframework.com/docs/theming/dark-mode
+/*
+ * Modo oscuro según preferencia del sistema.
  */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ion-background-color:     #121212;
+    --ion-background-color-rgb: 18, 18, 18;
+    --ion-text-color:           #ffffff;
+    --ion-text-color-rgb:       255, 255, 255;
+    --ion-color-step-50:        #1e1e1e;
+    --ion-color-step-100:       #2a2a2a;
+    --ion-color-step-150:       #363636;
+    --ion-color-step-200:       #414141;
+    --ion-color-step-250:       #4d4d4d;
+    --ion-color-step-300:       #595959;
+    --ion-color-step-350:       #656565;
+    --ion-color-step-400:       #717171;
+    --ion-color-step-450:       #7d7d7d;
+    --ion-color-step-500:       #898989;
+    --ion-color-step-550:       #949494;
+    --ion-color-step-600:       #a0a0a0;
+    --ion-color-step-650:       #acacac;
+    --ion-color-step-700:       #b8b8b8;
+    --ion-color-step-750:       #c4c4c4;
+    --ion-color-step-800:       #d0d0d0;
+    --ion-color-step-850:       #dbdbdb;
+    --ion-color-step-900:       #e7e7e7;
+    --ion-color-step-950:       #f3f3f3;
+    --ion-item-background:      #1e1e1e;
+    --ion-toolbar-background:   #1f1f1f;
+    --ion-tab-bar-background:   #1f1f1f;
+    --ion-card-background:      #1e1e1e;
+  }
+}
 
-/* @import "@ionic/angular/css/palettes/dark.always.css"; */
-/* @import "@ionic/angular/css/palettes/dark.class.css"; */
-@import '@ionic/angular/css/palettes/dark.system.css';
+/* Estilos base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  background-color: #0B1120;
+  margin: 0;
+  padding: 0;
+}
+
+/* Colores personalizados para la app */
+:root {
+  --navy: #0B1120;
+  --navy2: #131C30;
+  --navy3: #1A2540;
+  --gold: #F5A623;
+  --gold2: #FFCC5C;
+  --orange: #E8631A;
+  --teal: #0FC4A4;
+  --surface: #161F35;
+  --surface2: #1E2A42;
+  --border: rgba(255,255,255,0.08);
+  --text: #F0F4FF;
+  --muted: rgba(240,244,255,0.5);
+}
+
+ion-app {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #0B1120;
+}
+
+ion-content {
+  --background: #0B1120;
+  --padding-bottom: 56px;
+}
+
+@supports (padding-bottom: env(safe-area-inset-bottom)) {
+  ion-content {
+    --padding-bottom: calc(56px + env(safe-area-inset-bottom));
+  }
+}
+
+/* Estilos para scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(245, 166, 35, 0.5);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(245, 166, 35, 0.8);
+}
+
+/* ============================================ */
+/* MODO WEB - Centrado suave */
+/* ============================================ */
+@media (min-width: 768px) {
+  body {
+    background: linear-gradient(135deg, #0a0f1c 0%, #0B1120 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  ion-app {
+    position: relative;
+    width: 60%;
+    height: 85vh;
+    min-height: 600px;
+    max-height: 900px;
+    border-radius: 32px;
+    overflow: hidden;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    margin: auto;
+  }
+}
+
+/* Asegura visibilidad del router outlet */
+ion-router-outlet {
+  display: block;
+  width: 100%;
+  height: 100%;
+}

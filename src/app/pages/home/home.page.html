@@ -1,0 +1,35 @@
+<ion-content>
+  <!-- Header Hero -->
+  <div class="home-hero">
+    <div class="hero-accent"></div>
+    <div class="hero-accent2"></div>
+    
+    <div class="hero-top">
+      <div>
+        <p class="hero-greeting">Bienvenido/a 👋</p>
+        <p class="hero-name">YoAprendo</p>
+      </div>
+      <div class="hero-avatar">YA</div>
+    </div>
+    
+    <ion-progress-bar [value]="userProgress / 100" color="warning"></ion-progress-bar>
+    <p class="prog-label">1 de 5 módulos completado · ¡Sigue así!</p>
+  </div>
+
+  <!-- Modules List -->
+  <p class="section-lbl">Módulos formativos</p>
+  <div class="modules-list">
+    <div *ngFor="let module of modules" 
+         class="mod-card" 
+         [class.featured-card]="module.featured"
+         (click)="navigateTo(module.id)">
+      <div class="mod-icon" [class.ic-cv]="module.id === 'cv'">{{ module.icon }}</div>
+      <div class="mod-info">
+        <p class="mod-title">{{ module.title }}</p>
+        <p class="mod-sub">{{ module.subtitle }}</p>
+      </div>
+      <span class="mod-pill" [class.pill-green]="module.pillClass === 'pill-green'" 
+            [class.pill-gold]="module.pillClass === 'pill-gold'">{{ module.pill }}</span>
+    </div>
+  </div>
+</ion-content>
