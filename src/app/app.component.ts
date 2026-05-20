@@ -5,10 +5,6 @@ import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
 import { addIcons } from 'ionicons';
 import { filter } from 'rxjs/operators';
-
-// ← Importar TODOS los íconos usados en la app.
-//   En producción Angular hace tree-shaking y elimina íconos no registrados.
-//   Si un ícono no está aquí, desaparece en el build de Netlify.
 import {
   home,
   videocam,
@@ -46,6 +42,7 @@ import {
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss'],
   standalone: true,
   imports: [CommonModule, IonicModule, RouterModule],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
@@ -56,7 +53,9 @@ export class AppComponent {
   private readonly noTabRoutes = ['/splash', '/video-detail'];
 
   constructor(private router: Router) {
-    // Registrar todos los íconos de una vez — válido globalmente para toda la app
+    // Registrar todos los íconos globalmente.
+    // Al importarlos explícitamente, el bundler los incluye en el build
+    // y addIcons los sirve localmente sin depender de CDN externo.
     addIcons({
       home,
       videocam,
