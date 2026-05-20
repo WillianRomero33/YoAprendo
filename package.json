@@ -62,5 +62,11 @@
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
     "typescript": "~5.2.2"
+  },
+    "scripts": {
+    "start": "ionic serve",
+    "build": "ionic build --prod",
+    "test": "..."
   }
 }
+
