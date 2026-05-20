@@ -4,13 +4,48 @@ import { Router, NavigationEnd, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
 import { addIcons } from 'ionicons';
-import { home, videocam, documentText, business } from 'ionicons/icons';
 import { filter } from 'rxjs/operators';
+
+// ← Importar TODOS los íconos usados en la app.
+//   En producción Angular hace tree-shaking y elimina íconos no registrados.
+//   Si un ícono no está aquí, desaparece en el build de Netlify.
+import {
+  home,
+  videocam,
+  documentText,
+  documentTextOutline,
+  documentOutline,
+  business,
+  analyticsOutline,
+  arrowBackOutline,
+  arrowForwardOutline,
+  briefcaseOutline,
+  bulbOutline,
+  calculatorOutline,
+  checkmarkCircleOutline,
+  closeOutline,
+  constructOutline,
+  createOutline,
+  downloadOutline,
+  flashOutline,
+  footstepsOutline,
+  informationCircleOutline,
+  logoYoutube,
+  peopleOutline,
+  personOutline,
+  play,
+  playCircleOutline,
+  refreshOutline,
+  saveOutline,
+  schoolOutline,
+  sparklesOutline,
+  starOutline,
+  timeOutline,
+} from 'ionicons/icons';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
   standalone: true,
   imports: [CommonModule, IonicModule, RouterModule],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
@@ -21,7 +56,40 @@ export class AppComponent {
   private readonly noTabRoutes = ['/splash', '/video-detail'];
 
   constructor(private router: Router) {
-    addIcons({ home, videocam, documentText, business });
+    // Registrar todos los íconos de una vez — válido globalmente para toda la app
+    addIcons({
+      home,
+      videocam,
+      documentText,
+      documentTextOutline,
+      documentOutline,
+      business,
+      analyticsOutline,
+      arrowBackOutline,
+      arrowForwardOutline,
+      briefcaseOutline,
+      bulbOutline,
+      calculatorOutline,
+      checkmarkCircleOutline,
+      closeOutline,
+      constructOutline,
+      createOutline,
+      downloadOutline,
+      flashOutline,
+      footstepsOutline,
+      informationCircleOutline,
+      logoYoutube,
+      peopleOutline,
+      personOutline,
+      play,
+      playCircleOutline,
+      refreshOutline,
+      saveOutline,
+      schoolOutline,
+      sparklesOutline,
+      starOutline,
+      timeOutline,
+    });
 
     this.router.events
       .pipe(filter(e => e instanceof NavigationEnd))
@@ -31,4 +99,7 @@ export class AppComponent {
       });
   }
 
+  navigateTo(page: string) {
+    this.router.navigate([`/${page}`]);
+  }
 }
