@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "scripts": {
     "start": "ionic serve",
-    "build": "ng build --prod",
+    "build": "ng build --configuration production",
     "test": "..."
   },
   "dependencies": {
