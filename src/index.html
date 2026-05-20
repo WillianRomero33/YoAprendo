@@ -5,6 +5,71 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <base href="/" />
     <title>YoAprendo</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      
+      html, body {
+        height: 100%;
+        width: 100%;
+      }
+      
+      body {
+        background-color: #0b1120;
+        margin: 0;
+        padding: 0;
+      }
+      
+      :root {
+        --navy: #0B1120;
+        --navy2: #131C30;
+        --navy3: #1A2540;
+        --gold: #F5A623;
+        --gold2: #FFCC5C;
+        --orange: #E8631A;
+        --teal: #0FC4A4;
+        --surface: #161F35;
+        --surface2: #1E2A42;
+        --border: rgba(255,255,255,.08);
+        --text: #F0F4FF;
+        --muted: rgba(240,244,255,.5);
+      }
+      
+      ion-app {
+        position: absolute;
+        inset: 0;
+        background: #0b1120;
+      }
+      
+      ion-content {
+        --background: #0B1120;
+        --padding-bottom: 56px;
+      }
+      
+      @media (min-width: 768px) {
+        body {
+          background: linear-gradient(135deg, #0a0f1c, #0b1120);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        
+        ion-app {
+          position: relative;
+          width: 60%;
+          height: 85vh;
+          min-height: 600px;
+          max-height: 900px;
+          border-radius: 32px;
+          overflow: hidden;
+          box-shadow: 0 25px 50px -12px #00000080;
+          margin: auto;
+        }
+      }
+    </style>
   </head>
   <body>
     <app-root></app-root>
