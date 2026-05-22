@@ -1,2 +1,137 @@
-// For information on how to create your own theme, please refer to:
-// https://ionicframework.com/docs/theming/
+// src/theme/variables.scss
+// Variables de tema para YoAprendo — ImpulNova by ULS
+
+// ── Colores personalizados ───────────────────────────────────────────────────
+:root {
+  // Paleta principal
+  --ion-color-primary:         #F5A623;
+  --ion-color-primary-rgb:     245, 166, 35;
+  --ion-color-primary-contrast: #000000;
+  --ion-color-primary-contrast-rgb: 0, 0, 0;
+  --ion-color-primary-shade:   #d8921f;
+  --ion-color-primary-tint:    #f6af39;
+
+  --ion-color-secondary:       #0FC4A4;
+  --ion-color-secondary-rgb:   15, 196, 164;
+  --ion-color-secondary-contrast: #000000;
+  --ion-color-secondary-contrast-rgb: 0, 0, 0;
+  --ion-color-secondary-shade: #0dac90;
+  --ion-color-secondary-tint:  #27caad;
+
+  --ion-color-tertiary:        #E8631A;
+  --ion-color-tertiary-rgb:    232, 99, 26;
+  --ion-color-tertiary-contrast: #ffffff;
+  --ion-color-tertiary-contrast-rgb: 255, 255, 255;
+  --ion-color-tertiary-shade:  #cc5717;
+  --ion-color-tertiary-tint:   #ea7331;
+
+  --ion-color-success:         #2dd36f;
+  --ion-color-success-rgb:     45, 211, 111;
+  --ion-color-success-contrast: #000000;
+  --ion-color-success-shade:   #28ba62;
+  --ion-color-success-tint:    #42d77d;
+
+  --ion-color-warning:         #F5A623;
+  --ion-color-warning-rgb:     245, 166, 35;
+  --ion-color-warning-contrast: #000000;
+  --ion-color-warning-shade:   #d8921f;
+  --ion-color-warning-tint:    #f6af39;
+
+  --ion-color-danger:          #eb445a;
+  --ion-color-danger-rgb:      235, 68, 90;
+  --ion-color-danger-contrast: #ffffff;
+  --ion-color-danger-shade:    #cf3c4f;
+  --ion-color-danger-tint:     #ed576b;
+
+  --ion-color-dark:            #222428;
+  --ion-color-dark-rgb:        34, 36, 40;
+  --ion-color-dark-contrast:   #ffffff;
+  --ion-color-dark-shade:      #1e2023;
+  --ion-color-dark-tint:       #383a3e;
+
+  --ion-color-medium:          #92949c;
+  --ion-color-medium-rgb:      146, 148, 156;
+  --ion-color-medium-contrast: #000000;
+  --ion-color-medium-shade:    #808289;
+  --ion-color-medium-tint:     #9d9fa6;
+
+  --ion-color-light:           #f4f5f8;
+  --ion-color-light-rgb:       244, 245, 248;
+  --ion-color-light-contrast:  #000000;
+  --ion-color-light-shade:     #d7d8da;
+  --ion-color-light-tint:      #f5f6f9;
+
+  // ── Fondo y texto global ──────────────────────────────────────────────────
+  --ion-background-color:          #0B1120;
+  --ion-background-color-rgb:      11, 17, 32;
+  --ion-text-color:                #F0F4FF;
+  --ion-text-color-rgb:            240, 244, 255;
+
+  // ── Toolbar ───────────────────────────────────────────────────────────────
+  --ion-toolbar-background:        #0B1120;
+  --ion-toolbar-color:             #F0F4FF;
+  --ion-toolbar-border-color:      rgba(255,255,255,0.06);
+
+  // ── Tab bar ───────────────────────────────────────────────────────────────
+  --ion-tab-bar-background:        #0d1628;
+  --ion-tab-bar-border-color:      rgba(255,255,255,0.06);
+  --ion-tab-bar-color:             rgba(240,244,255,0.45);
+  --ion-tab-bar-color-selected:    #F5A623;
+
+  // ── Items / Cards ─────────────────────────────────────────────────────────
+  --ion-item-background:           #161F35;
+  --ion-card-background:           #161F35;
+
+  // ── Inputs ────────────────────────────────────────────────────────────────
+  --ion-color-step-50:             #0f1927;
+  --ion-color-step-100:            #131d2e;
+  --ion-color-step-150:            #172234;
+  --ion-color-step-200:            #1b263b;
+  --ion-color-step-250:            #1f2b42;
+  --ion-color-step-300:            #232f48;
+  --ion-color-step-350:            #27344f;
+  --ion-color-step-400:            #2b3856;
+  --ion-color-step-450:            #2f3d5c;
+  --ion-color-step-500:            #334163;
+  --ion-color-step-550:            #3d4e73;
+  --ion-color-step-600:            #4e6089;
+  --ion-color-step-650:            #60729f;
+  --ion-color-step-700:            #7184b4;
+  --ion-color-step-750:            #8397ca;
+  --ion-color-step-800:            #94a9df;
+  --ion-color-step-850:            #a6bbf5;
+  --ion-color-step-900:            #b8ceff;
+  --ion-color-step-950:            #d4e0ff;
+
+  // ── Variables custom de la app ────────────────────────────────────────────
+  --navy:    #0B1120;
+  --navy2:   #131C30;
+  --navy3:   #1A2540;
+  --gold:    #F5A623;
+  --gold2:   #FFCC5C;
+  --orange:  #E8631A;
+  --teal:    #0FC4A4;
+  --surface: #161F35;
+  --surface2: #1E2A42;
+  --border:  rgba(255,255,255,0.08);
+  --text:    #F0F4FF;
+  --muted:   rgba(240,244,255,0.5);
+}
+
+// ── Scroll nativo en ion-content ─────────────────────────────────────────────
+// Sin esto el scroll no funciona en producción con standalone
+ion-content {
+  --overflow: auto;
+}
+
+// ── ion-button: restaurar estilos base que se pierden sin IonicModule ────────
+ion-button {
+  --border-radius: 8px;
+  --padding-top: 12px;
+  --padding-bottom: 12px;
+}
+
+// ── Fuente global ─────────────────────────────────────────────────────────────
+* {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
