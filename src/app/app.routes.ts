@@ -1,5 +1,6 @@
 // src/app/app.routes.ts
 import { Routes } from '@angular/router';
+import { ModuleGuard, moduleGuard } from './guards/module.guard';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'splash', pathMatch: 'full' },
@@ -17,6 +18,7 @@ export const routes: Routes = [
   },
   {
     path: 'tutorials',
+    canActivate: [moduleGuard('ikigaiAnswers', '/ikigai')],
     loadComponent: () => import('./pages/tutorials/tutorials.page').then(m => m.TutorialsPage),
   },
   {
