@@ -71,16 +71,16 @@ export class CvPage implements OnInit {
     await this.storage.set('profileTip', this.profileTip);
   }
 
-  // ← Requerido por (click)="downloadPDF()"
+  //(click)="downloadPDF()"
   downloadPDF() {
     this.saveCV();
     this.pdfService.generateCV(this.cvData);
   }
 
-  // ← Requerido por (click)="downloadWord()"
+  //(click)="downloadWord()"
   downloadWord() {
     this.saveCV();
-    // Genera un .doc básico en formato HTML que Word puede abrir
+    // Genera un .doc básico en formato HTML
     const content = `
       <html xmlns:o="urn:schemas-microsoft-com:office:office"
             xmlns:w="urn:schemas-microsoft-com:office:word"

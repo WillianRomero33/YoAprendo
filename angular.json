@@ -31,9 +31,9 @@
                 "output": "assets"
               },
               {
-                "glob": "**/*.svg",
-                "input": "node_modules/ionicons/dist/ionicons/svg",
-                "output": "svg"
+                "glob": "**/*.css",
+                "input": "node_modules/@ionic/angular/css",
+                "output": "assets/css"
               }
             ],
             "styles": [
