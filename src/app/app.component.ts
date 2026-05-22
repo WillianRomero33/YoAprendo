@@ -2,41 +2,18 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { Router, NavigationEnd, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { IonicModule } from '@ionic/angular';
-import { addIcons } from 'ionicons';
 import { filter } from 'rxjs/operators';
+import { addIcons } from 'ionicons';
+import { IonApp, IonRouterOutlet, IonTabBar, IonTabButton, IonIcon, IonLabel } from '@ionic/angular/standalone';
+
 import {
-  home,
-  videocam,
-  documentText,
-  documentTextOutline,
-  documentOutline,
-  business,
-  analyticsOutline,
-  arrowBackOutline,
-  arrowForwardOutline,
-  briefcaseOutline,
-  bulbOutline,
-  calculatorOutline,
-  checkmarkCircleOutline,
-  closeOutline,
-  constructOutline,
-  createOutline,
-  downloadOutline,
-  flashOutline,
-  footstepsOutline,
-  informationCircleOutline,
-  logoYoutube,
-  peopleOutline,
-  personOutline,
-  play,
-  playCircleOutline,
-  refreshOutline,
-  saveOutline,
-  schoolOutline,
-  sparklesOutline,
-  starOutline,
-  timeOutline,
+  home, videocam, documentText, documentTextOutline, documentOutline,
+  business, analyticsOutline, arrowBackOutline, arrowForwardOutline,
+  briefcaseOutline, bulbOutline, calculatorOutline, checkmarkCircleOutline,
+  closeOutline, constructOutline, createOutline, downloadOutline, flashOutline,
+  footstepsOutline, informationCircleOutline, logoYoutube, peopleOutline,
+  personOutline, play, playCircleOutline, refreshOutline, saveOutline,
+  schoolOutline, sparklesOutline, starOutline, timeOutline,
 } from 'ionicons/icons';
 
 @Component({
@@ -44,7 +21,16 @@ import {
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
   standalone: true,
-  imports: [CommonModule, IonicModule, RouterModule],
+  imports: [
+    CommonModule,
+    RouterModule,
+    IonApp,
+    IonRouterOutlet,
+    IonTabBar,
+    IonTabButton,
+    IonIcon,
+    IonLabel,
+  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class AppComponent {
@@ -54,37 +40,13 @@ export class AppComponent {
 
   constructor(private router: Router) {
     addIcons({
-      home,
-      videocam,
-      documentText,
-      documentTextOutline,
-      documentOutline,
-      business,
-      analyticsOutline,
-      arrowBackOutline,
-      arrowForwardOutline,
-      briefcaseOutline,
-      bulbOutline,
-      calculatorOutline,
-      checkmarkCircleOutline,
-      closeOutline,
-      constructOutline,
-      createOutline,
-      downloadOutline,
-      flashOutline,
-      footstepsOutline,
-      informationCircleOutline,
-      logoYoutube,
-      peopleOutline,
-      personOutline,
-      play,
-      playCircleOutline,
-      refreshOutline,
-      saveOutline,
-      schoolOutline,
-      sparklesOutline,
-      starOutline,
-      timeOutline,
+      home, videocam, documentText, documentTextOutline, documentOutline,
+      business, analyticsOutline, arrowBackOutline, arrowForwardOutline,
+      briefcaseOutline, bulbOutline, calculatorOutline, checkmarkCircleOutline,
+      closeOutline, constructOutline, createOutline, downloadOutline, flashOutline,
+      footstepsOutline, informationCircleOutline, logoYoutube, peopleOutline,
+      personOutline, play, playCircleOutline, refreshOutline, saveOutline,
+      schoolOutline, sparklesOutline, starOutline, timeOutline,
     });
 
     this.router.events
