@@ -53,9 +53,6 @@ export class AppComponent {
   private readonly noTabRoutes = ['/splash', '/video-detail'];
 
   constructor(private router: Router) {
-    // Registrar todos los íconos globalmente.
-    // Al importarlos explícitamente, el bundler los incluye en el build
-    // y addIcons los sirve localmente sin depender de CDN externo.
     addIcons({
       home,
       videocam,

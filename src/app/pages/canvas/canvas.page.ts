@@ -17,10 +17,7 @@ import { AiService } from '../../services/ai.service';
 })
 export class CanvasPage implements OnInit {
 
-  // ← Segmento activo: requerido por el HTML con [(ngModel)]="activeSegment"
   activeSegment: string = 'canvas';
-
-  // ← Bloques del canvas: requerido por *ngFor="let block of canvasBlocks"
   canvasBlocks = [
     { emoji: '💡', title: 'Propuesta de valor',    hint: '¿Qué problema resuelves y qué te hace diferente?',              placeholder: 'Ej: Ofrezco pupusas artesanales con ingredientes orgánicos, a domicilio…' },
     { emoji: '👥', title: 'Segmento de clientes',  hint: '¿A quién va dirigido tu producto o servicio?',                  placeholder: 'Ej: Familias del municipio de 25-50 años que buscan comida casera…' },
@@ -33,7 +30,6 @@ export class CanvasPage implements OnInit {
     { emoji: '📊', title: 'Estructura de costos',  hint: '¿Cuáles son tus principales gastos?',                           placeholder: 'Ej: Ingredientes, gas, transporte, empaques, publicidad…' },
   ];
 
-  // ← Datos del canvas: requerido por [(ngModel)]="canvasData[i]"
   canvasData: string[] = Array(9).fill('');
 
   canvasResult: string = '';
@@ -74,7 +70,6 @@ export class CanvasPage implements OnInit {
     await this.storage.set('canvasResult', this.canvasResult);
   }
 
-  // ← Requerido por (click)="goToCV()"
   goToCV() {
     this.router.navigate(['/cv']);
   }

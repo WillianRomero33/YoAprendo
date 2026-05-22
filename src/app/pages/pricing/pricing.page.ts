@@ -35,10 +35,9 @@ export class PricingPage {
   gananciaPct: number | null = null;
   unidades:    number | null = null;
 
-  // ← Requerido por *ngIf="resultado" y {{ resultado.xxx }}
+  
   resultado: { costoPorUnidad: number; utilidad: number; precio: number } | null = null;
 
-  // ← Requerido por {{ tipActual }} y (click)="nextTip()"
   tipActual: string = '';
   private tipIndex: number = 0;
 
@@ -47,7 +46,7 @@ export class PricingPage {
     private aiService: AiService,
   ) {}
 
-  // ← Requerido por (click)="calcularPrecio()"
+  // (click)="calcularPrecio()"
   calcularPrecio() {
     const mat  = Number(this.materiales  ?? 0);
     const mdo  = Number(this.manoDeObra  ?? 0);
@@ -65,7 +64,7 @@ export class PricingPage {
     this.tipActual = TIPS[this.tipIndex];
   }
 
-  // ← Requerido por (click)="nextTip()"
+  //(click)="nextTip()"
   nextTip() {
     this.tipIndex  = (this.tipIndex + 1) % TIPS.length;
     this.tipActual = TIPS[this.tipIndex];

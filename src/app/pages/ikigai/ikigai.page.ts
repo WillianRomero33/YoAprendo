@@ -46,7 +46,7 @@ export class IkigaiPage implements OnInit {
     await this.storage.set('ikigaiResult', this.result);
   }
 
-  // ← Requerido por (click)="saveAndContinue()" en el HTML
+  //(click)="saveAndContinue()" en el HTML
   async saveAndContinue() {
     await this.saveAnswers();
     await this.storage.set('ikigaiResult', this.result);

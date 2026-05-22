@@ -19,7 +19,7 @@ export const COURSES: Course[] = [
     id: 0, cat: 'agro', emoji: '🌱', bg: '#0a2a1a',
     title: 'Miniinvernaderos con materiales reciclados',
     dur: '12 min', level: 'Básico',
-    // ← REEMPLAZA con el link real de YouTube
+    // ← REEMPLAZAR con el link real de YouTube
     youtubeUrl: 'https://www.youtube.com/watch?v=EJEMPLO_VIDEO_ID_0',
     description: 'Aprende a construir un miniinvernadero funcional usando botellas plásticas, maderas y materiales que ya tienes en casa. Una solución económica y sostenible para cultivar tus propias plantas.',
     whatYouLearn: ['Selección de materiales reciclados adecuados', 'Construcción paso a paso del invernadero', 'Control de temperatura y humedad básico', 'Qué plantas son ideales para comenzar'],

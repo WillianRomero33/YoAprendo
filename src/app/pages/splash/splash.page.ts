@@ -17,12 +17,10 @@ import { arrowForwardOutline } from 'ionicons/icons';
 export class SplashPage implements OnInit {
 
   constructor(private router: Router) {
-    // Registrar íconos usados en esta página
     addIcons({ arrowForwardOutline });
   }
 
   ngOnInit() {
-    // ← Sin setTimeout: la navegación ocurre solo cuando el usuario presiona un botón
   }
 
   goToHome() {

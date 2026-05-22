@@ -14,7 +14,7 @@ export interface CVData {
   referencias: string;
 }
 
-// ── Zona: franja vertical con y_inicio y y_fin fijos ────────────────────────
+
 interface Zone { y0: number; y1: number; }
 
 @Injectable({ providedIn: 'root' })
@@ -62,7 +62,6 @@ export class PdfService {
   private readonly FOOTER_Y = 262; // inicio del footer
 
   // ── Helpers ──────────────────────────────────────────────────────────────────
-  /** Fuente adaptativa: ajusta el tamaño para que el texto quepa en una zona */
   private fitFontSize(
     doc: jsPDF, text: string, maxW: number,
     zoneH: number, minFs: number, maxFs: number, style: string = 'normal'
@@ -71,13 +70,13 @@ export class PdfService {
       doc.setFontSize(fs);
       doc.setFont('helvetica', style);
       const lines = doc.splitTextToSize(text, maxW);
-      const lineH = fs * 0.42;          // interlineado proporcional
+      const lineH = fs * 0.42;
       const totalH = lines.length * lineH;
       if (totalH <= zoneH) {
         return { fontSize: fs, lineH, lines };
       }
     }
-    // Si ni al mínimo cabe, usa el mínimo y acepta el corte
+  
     doc.setFontSize(minFs);
     doc.setFont('helvetica', style);
     const lines = doc.splitTextToSize(text, maxW);
@@ -168,7 +167,6 @@ export class PdfService {
 
       if (items.length > 0) {
         const zoneH = z.y1 - z.y0;
-        // Reparte el espacio equitativamente entre los items
         const itemH = (zoneH - 8) / items.length;
 
         let y = z.y0 + 4;
@@ -176,7 +174,6 @@ export class PdfService {
         y += 6;
 
         items.forEach(item => {
-          // Calcula fuente que quepa en el itemH disponible
           const { fontSize, lineH, lines } = this.fitFontSize(
             doc, item.value, this.LC_IW, itemH - 5, 6, 8
           );
@@ -213,9 +210,8 @@ export class PdfService {
         this.leftZoneTitle(doc, 'HABILIDADES', this.LC_X, y);
         y += 6;
 
-        // Espacio disponible para pills
+
         const pillAreaH = zoneH - 10;
-        // Altura de cada pill adaptada al número de habilidades
         const pillH   = Math.min(8, Math.max(5, pillAreaH / skills.length));
         const fontSize = Math.min(7.5, Math.max(5.5, pillH * 0.8));
         const gap      = Math.min(2, (pillAreaH - skills.length * pillH) / Math.max(skills.length - 1, 1));
@@ -253,7 +249,6 @@ export class PdfService {
           y += lineH;
         });
       } else {
-        // Sin referencias: mensaje placeholder suave
         let y = this.centerY(z, 8);
         doc.setFontSize(6.5); doc.setFont('helvetica', 'normal');
         doc.setTextColor(60, 75, 100);
@@ -349,7 +344,7 @@ export class PdfService {
     const totalTextH = lines.length * lineH;
     const extraSpace = Math.max(0, contentH - 3 - totalTextH);
     const extraPerLine = lines.length > 1 ? extraSpace / (lines.length - 1) : 0;
-    // Limitar espaciado extra para que no se vea raro
+    // Limitar espaciado extra
     const finalLineH = lineH + Math.min(extraPerLine, 2.5);
 
     lines.forEach((l: string) => {
